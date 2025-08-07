@@ -10,12 +10,16 @@ requires-python = ">=3.12"
 dependencies = [
     "polars (>=1.32.1,<2.0.0)",
     "pyguitarpro (>=0.9.3,<0.10.0)",
-    "pytest (>=8.4.1,<9.0.0)"
+    "pytest (>=8.4.1,<9.0.0)",
+    "pydantic (>=2.11.7,<3.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "py_note_extract", from = "src"}]
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.30.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
