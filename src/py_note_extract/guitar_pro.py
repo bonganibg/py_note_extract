@@ -1,4 +1,4 @@
-from src.models import Song, Track, Note
+from models import Song, Track, Note
 from typing import List
 import guitarpro as gp
 
