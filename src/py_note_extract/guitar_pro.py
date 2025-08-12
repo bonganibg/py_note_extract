@@ -1,4 +1,4 @@
-from models import Song, Track, Note
+from py_note_extract.models import Song, Track, Note
 from typing import List
 import guitarpro as gp
 
