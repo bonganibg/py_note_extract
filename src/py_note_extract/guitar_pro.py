@@ -66,5 +66,3 @@ def __get_track_details(measures: list[gp.models.Measure]) -> Track:
                     newTrack.notes.append(newNote)
 
     return newTrack
-
-
