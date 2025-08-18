@@ -7,15 +7,16 @@ class Note(BaseModel):
     duration: int
     value: str
     pitch: int
+    timeSignature: str = None
 
 class Track(BaseModel):
-    title: str = None
-    notes: list[Note] = []
+    title: str = None    
+    notes: list[Note] = []    
 
 class Song(BaseModel):
     artist: str = None
-    title: str = None
-    tracks: list[Track] = []
+    title: str = None    
+    tracks: list[Track] = []    
 
 def song_to_dataframe(song: Song) -> pd.DataFrame:
     """Converts a Song object into a pandas DataFrame.
@@ -35,6 +36,7 @@ def song_to_dataframe(song: Song) -> pd.DataFrame:
             "duration": [],
             "note": [],
             "pitch": [],
+            "timeSignature": [],
             "timestamp": []
         }
 
@@ -43,6 +45,7 @@ def song_to_dataframe(song: Song) -> pd.DataFrame:
             song_details["duration"].append(note.duration)
             song_details["pitch"].append(note.pitch)
             song_details["note"].append(note.value)
+            song_details["timeSignature"].append(note.timeSignature)
             song_details["timestamp"].append(datetime.now())        
 
         df = pd.DataFrame(song_details)

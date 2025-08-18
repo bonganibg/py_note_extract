@@ -53,7 +53,8 @@ def __get_track_details(measures: list[gp.models.Measure]) -> Track:
     newTrack = Track()
 
     for measure in measures:
-        tempo = measure.track.song.tempo        
+        tempo = measure.track.song.tempo
+        timeSignature = f"{measure.timeSignature.numerator}/{measure.timeSignature.denominator.value}"
         for voice in measure.voices:            
             for beat in voice.beats:
                 duration = beat.duration.value
@@ -62,7 +63,7 @@ def __get_track_details(measures: list[gp.models.Measure]) -> Track:
                     octave = (pitch // 12) - 1
                     noteValue = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"][pitch % 12]
 
-                    newNote = Note(tempo=tempo, duration=duration, value=str(noteValue), pitch=octave)
+                    newNote = Note(tempo=tempo, duration=duration, value=str(noteValue), pitch=octave, timeSignature=timeSignature)
                     newTrack.notes.append(newNote)
 
     return newTrack
